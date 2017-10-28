@@ -13,21 +13,17 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        $role_ingresar = Role::where('name', 'ingresar')->first();
-        $role_modificar  = Role::where('name', 'modificar')->first();
-        $role_ver  = Role::where('name', 'ver')->first();
-        $role_eliminar  = Role::where('name', 'eliminar')->first();
-        $role_admin  = Role::where('name', 'admin')->first();
+        $role_c = Role::where('name', 'CREATE')->first();
+        $role_r = Role::where('name', 'READ')->first();
+        $role_u = Role::where('name', 'UPDATE')->first();
+        $role_d = Role::where('name', 'DELETE')->first();
+        $role_admin = Role::where('name', 'ADMIN')->first();
 
         $user = new User();
         $user->name = 'Admin';
         $user->email = 'admin@admin.com';
         $user->password = bcrypt('admin');
         $user->save();
-        $user->roles()->attach($role_ingresar);
-        $user->roles()->attach($role_eliminar);
-        $user->roles()->attach($role_modificar);
-        $user->roles()->attach($role_ver);
         $user->roles()->attach($role_admin);
         
         $user1 = new User();
@@ -35,9 +31,9 @@ class UserTableSeeder extends Seeder
         $user1->email = 'usuario1@admin.com';
         $user1->password = bcrypt('usuario');
         $user1->save();
-        $user1->roles()->attach($role_ingresar);
-        $user1->roles()->attach($role_eliminar);
-        $user1->roles()->attach($role_modificar);
-        $user1->roles()->attach($role_ver);
+        $user1->roles()->attach($role_c);
+        $user1->roles()->attach($role_r);
+        $user1->roles()->attach($role_u);
+        $user1->roles()->attach($role_d);
     }
 }

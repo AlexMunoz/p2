@@ -12,28 +12,28 @@ class RoleTableSeeder extends Seeder
      */
     public function run()
     {
-        $role_ingresar = new Role();
-        $role_ingresar->name = 'ingresar';
-        $role_ingresar->description = 'rol para ingresar';
-        $role_ingresar->save();
+        $role_create = new Role();
+        $role_create->name = 'CREATE';
+        $role_create->description = 'rol para insertar';
+        $role_create->save();
 
-        $role_modificar = new Role();
-        $role_modificar->name = 'modificar';
-        $role_modificar->description = 'rol para modificar';
-        $role_modificar->save();
+        $role_read = new Role();
+        $role_read->name = 'READ';
+        $role_read->description = 'rol para ver';
+        $role_read->save();
 
-        $role_ver = new Role();
-        $role_ver->name = 'ver';
-        $role_ver->description = 'rol para ver';
-        $role_ver->save();
+        $role_update = new Role();
+        $role_update->name = 'UPDATE';
+        $role_update->description = 'rol para modificar';
+        $role_update->save();
 
-        $role_eliminar = new Role();
-        $role_eliminar->name = 'eliminar';
-        $role_eliminar->description = 'rol para eliminar';
-        $role_eliminar->save();
+        $role_delete = new Role();
+        $role_delete->name = 'DELETE';
+        $role_delete->description = 'rol para eliminar';
+        $role_delete->save();
 
         $role_admin = new Role();
-        $role_admin->name = 'admin';
+        $role_admin->name = 'ADMIN';
         $role_admin->description = 'rol para administrar';
         $role_admin->save();
     }
