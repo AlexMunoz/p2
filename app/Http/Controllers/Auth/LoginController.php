@@ -57,4 +57,7 @@ class LoginController extends Controller
             'g-recaptcha-response.captcha'  => 'Captcha requerido',
         ]);
     }
+
+    //public $maxAttempts = 0; // change to the max attemp you want.
+    //public $decayMinutes = 1; // change to the minutes you want.
 }
