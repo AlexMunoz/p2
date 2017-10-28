@@ -8,6 +8,14 @@
                 <div class="panel-heading">Register</div>
 
                 <div class="panel-body">
+
+                    <div class="row">
+                        <div class="col-md-4 col-md-offset-4">
+                            <a href="{{url('/redirect')}}" class="btn btn-primary">Register with Facebook</a>
+                        </div>
+                    </div>
+                    <hr>
+
                     <form class="form-horizontal" method="POST" action="{{ route('register') }}">
                         {{ csrf_field() }}
 
