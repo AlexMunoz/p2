@@ -42,7 +42,7 @@ class User extends Authenticatable
       if ($this->hasAnyRole($roles)) {
         return true;
       }
-      abort(401, 'This action is unauthorized.');
+      return false;
     }
 
     public function hasAnyRole($roles)

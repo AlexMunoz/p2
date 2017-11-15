@@ -14,7 +14,12 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    @if (Auth::user()->hasAnyRole(['READ','ADMIN']))
+                        <a href="{{url('equipo')}}" class="btn btn-success">Ver equipos</a>
+                    @else
+                        <p>No tienes permisos</p>
+                    @endif
+                    
                 </div>
             </div>
         </div>

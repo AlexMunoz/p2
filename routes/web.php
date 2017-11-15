@@ -12,6 +12,9 @@
 */
 
 Route::get('/', function () {
+    if(Auth::user()) {
+        return view('home');
+    }
     return view('welcome');
 });
 
@@ -20,3 +23,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/redirect', 'FbAuthController@redirect');
 Route::get('/callback', 'FbAuthController@callback');
+
+Route::resource('equipo', 'EquipoController');
+
+Route::resource('comentario', 'ComentarioController');
