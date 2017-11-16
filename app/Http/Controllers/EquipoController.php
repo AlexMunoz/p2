@@ -65,7 +65,7 @@ class EquipoController extends Controller
     public function store(Request $request)
     {
         $op = $request->user()->authorizeRoles(['CREATE', 'ADMIN']);
-        if($op){
+        if($op){            
             $request->validate([
                 'name' => 'required|max:255',
                 'description' => 'max:255',
@@ -77,6 +77,8 @@ class EquipoController extends Controller
             ]);
     
             $equipo->save();
+
+            Log::info($request->ip().'  Usuario '.$request->user()->name.'('.$request->user()->id.') ingreso equipo '.$equipo);
             return redirect('/equipo');
         }
         return redirect()->back();
@@ -131,7 +133,7 @@ class EquipoController extends Controller
             ]);
     
             Equipo:: find($id)->update($request->all());
-    
+            Log::info($request->ip().'  Usuario '.$request->user()->name.'('.$request->user()->id.') actualizo equipo '.$id);
             return redirect()->route('equipo.index');
         }
 
@@ -147,10 +149,12 @@ class EquipoController extends Controller
     public function destroy($id)
     {
         $op = Auth::user()->authorizeRoles(['DELETE', 'ADMIN']);
+        
         if($op){
             $equipo = Equipo::find($id);
             $equipo->comentarios()->delete();
             $equipo->delete();
+            Log::info(' Usuario '.$request->user()->name.'('.$request->user()->id.') elimino equipo '.$id);
             return redirect()->route('equipo.index');
         }
         return redirect()->back();
