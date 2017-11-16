@@ -154,7 +154,7 @@ class EquipoController extends Controller
             $equipo = Equipo::find($id);
             $equipo->comentarios()->delete();
             $equipo->delete();
-            Log::info(' Usuario '.$request->user()->name.'('.$request->user()->id.') elimino equipo '.$id);
+            Log::info(' Usuario '.Auth::user()->name.'('.Auth::user()->id.') elimino equipo '.$id);
             return redirect()->route('equipo.index');
         }
         return redirect()->back();
